@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
 import Svg, { Circle, G, Line, Rect } from 'react-native-svg';
 
-
-
-
-
-
 const palavras = [
-  { resposta: "REACT", dica: "Biblioteca JavaScript para interfaces" },
-  { resposta: "EXPO", dica: "Framework para apps React Native" },
-  { resposta: "MOBILE", dica: "Tipo de desenvolvimento de apps" }
+  { resposta: "CORINTHIANS", dica: "Nome oficial do time" },
+  { resposta: "TIMÃO", dica: "Apelido carinhoso da torcida" },
+  { resposta: "FIEL", dica: "Como é conhecida a torcida do Corinthians" },
+  { resposta: "GAVIÕES", dica: "Principal torcida organizada do clube" },
+  { resposta: "ALVINEGRO", dica: "Cores tradicionais do uniforme" },
+  { resposta: "MOSQUETEIRO", dica: "Mascote oficial do clube" },
+  { resposta: "PARQUE SÃO JORGE", dica: "Sede social do clube" },
+  { resposta: "ARENA CORINTHIANS", dica: "Estádio onde o time manda seus jogos" },
+  { resposta: "PAULISTÃO", dica: "Campeonato estadual que o clube disputa" },
+  { resposta: "LIBERTADORES", dica: "Competição continental conquistada em 2012" }
 ];
 
 const getPalavraAleatoria = () => palavras[Math.floor(Math.random() * palavras.length)];
@@ -47,7 +49,7 @@ export default function App() {
     if (resposta.split('').every((l) => corretas.includes(l) || l === letra)) {
       Alert.alert("Parabéns!", "Você acertou a palavra!", [{ text: "OK", onPress: iniciarJogo }]);
     }
-    if (erradas.length + 1 >= 5) {
+    if (erradas.length + 1 >= 6) {
       Alert.alert("Game Over", `A resposta era: ${resposta}`, [{ text: "OK", onPress: iniciarJogo }]);
     }
   };
@@ -69,6 +71,8 @@ export default function App() {
   {erradas.length > 1 && <Line x1="150" y1="115" x2="150" y2="150" stroke="black" strokeWidth="5" />}
   {erradas.length > 2 && <Line x1="150" y1="125" x2="130" y2="140" stroke="black" strokeWidth="5" />}
   {erradas.length > 3 && <Line x1="150" y1="125" x2="170" y2="140" stroke="black" strokeWidth="5" />}
+  {erradas.length > 4 && <Line x1="150" y1="150" x2="130" y2="170" stroke="black" strokeWidth="5" />}
+  {erradas.length > 5 && <Line x1="150" y1="150" x2="170" y2="170" stroke="black" strokeWidth="5" />}
   
 </Svg>
 
