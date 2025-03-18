@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
-import { Svg } from 'expo';
+import Svg, { Circle, G, Line, Rect } from 'react-native-svg';
 
-const { Circle, G, Line, Rect } = Svg;
+
+
+
+
 
 const palavras = [
   { resposta: "REACT", dica: "Biblioteca JavaScript para interfaces" },
@@ -53,6 +56,22 @@ export default function App() {
     <View style={estilos.container}>
       <Text style={estilos.pontuacao}>Pontuação: {pontuacao}</Text>
       <Text style={estilos.dica}>Dica: {dica}</Text>
+
+      <Svg height="200" width="200">
+  {/* Estrutura da Forca */}
+  <Line x1="50" y1="180" x2="150" y2="180" stroke="black" strokeWidth="5" />
+  <Line x1="100" y1="180" x2="100" y2="50" stroke="black" strokeWidth="5" />
+  <Line x1="100" y1="50" x2="150" y2="50" stroke="black" strokeWidth="5" />
+  <Line x1="150" y1="50" x2="150" y2="80" stroke="black" strokeWidth="5" />
+
+  {/* Boneco da Forca - Aparece conforme os erros */}
+  {erradas.length > 0 && <Circle cx="150" cy="100" r="15" stroke="black" strokeWidth="5" fill="none" />}
+  {erradas.length > 1 && <Line x1="150" y1="115" x2="150" y2="150" stroke="black" strokeWidth="5" />}
+  {erradas.length > 2 && <Line x1="150" y1="125" x2="130" y2="140" stroke="black" strokeWidth="5" />}
+  {erradas.length > 3 && <Line x1="150" y1="125" x2="170" y2="140" stroke="black" strokeWidth="5" />}
+  
+</Svg>
+
       <View style={estilos.palavra}>
         {resposta.split('').map((letra, index) => (
           <Text key={index} style={estilos.letra}>{corretas.includes(letra) ? letra : "_"}</Text>
